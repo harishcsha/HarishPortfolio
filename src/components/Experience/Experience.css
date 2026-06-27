@@ -1,0 +1,58 @@
+.exp-section { background: var(--bg-primary); }
+.exp-section__glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(124,58,237,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+.timeline { display: flex; flex-direction: column; gap: 14px; }
+.exp-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.exp-card:hover { border-color: var(--border-hover); box-shadow: var(--shadow-sm); }
+.exp-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 22px 24px;
+  cursor: pointer;
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+}
+.exp-card__marker { width: 4px; min-height: 50px; border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
+.exp-card__info { flex: 1; }
+.exp-card__company {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 3px;
+}
+.exp-card__role { font-size: 14px; color: var(--purple-glow); font-weight: 500; margin-bottom: 5px; }
+.exp-card__meta { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); display: flex; gap: 8px; flex-wrap: wrap; }
+.exp-card__dot { opacity: 0.4; }
+.exp-card__chevron { font-size: 18px; color: var(--text-muted); transition: transform 0.3s; flex-shrink: 0; padding-top: 2px; }
+.exp-card__chevron.open { transform: rotate(180deg); color: var(--purple-glow); }
+.exp-card__body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+  padding: 0 24px 0 44px;
+}
+.exp-card__body.open { max-height: 600px; padding-bottom: 20px; }
+.exp-card__project { margin-bottom: 16px; }
+.exp-card__project:last-child { margin-bottom: 0; }
+.exp-card__proj-name {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--purple-glow);
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+.exp-card__proj-desc { font-size: 14px; color: var(--text-body); line-height: 1.7; }

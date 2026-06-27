@@ -1,0 +1,153 @@
+/* ── Section shell ───────────────────────────────────── */
+.contact-section {
+  background: linear-gradient(to bottom, var(--bg-primary), var(--bg-secondary));
+}
+.contact-section__orb {
+  position: absolute;
+  bottom: -200px; left: 50%; transform: translateX(-50%);
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* ── Heading block (centred above the two columns) ───── */
+.contact__heading-wrap {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.contact__heading-wrap .section-label {
+  justify-content: center;
+}
+.contact__heading-wrap .section-heading {
+  margin-bottom: 16px;
+}
+.contact__sub {
+  font-size: 16px;
+  color: var(--text-body);
+  line-height: 1.8;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+/* ── Two-column body ─────────────────────────────────── */
+.contact__body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ── LEFT — Map ──────────────────────────────────────── */
+.contact__map-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.contact__map-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.contact__map {
+  width: 100%;
+  height: 340px;
+  border: 0;
+  border-radius: 12px;
+  display: block;
+  /* Desaturate slightly in dark mode for visual consistency */
+  filter: brightness(0.88) saturate(0.75);
+  transition: filter var(--transition);
+}
+[data-theme='light'] .contact__map {
+  filter: none;
+}
+.contact__map:hover { filter: brightness(1) saturate(1); }
+
+/* ── RIGHT — Contact info ────────────────────────────── */
+.contact__right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.contact__links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.contact__link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  padding: 16px 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  width: 100%;
+  transition: border-color var(--transition), background var(--transition), transform var(--transition);
+  text-align: left;
+}
+.contact__link:hover {
+  border-color: var(--purple-glow);
+  background: var(--bg-card-hover);
+  transform: translateX(4px);
+}
+.contact__link-icon {
+  flex-shrink: 0;
+  color: var(--purple-glow);
+  display: flex;
+  align-items: center;
+}
+.contact__link-label {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 3px;
+}
+.contact__link-val {
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 500;
+  word-break: break-all;
+}
+.contact__link-arrow {
+  margin-left: auto;
+  flex-shrink: 0;
+  color: var(--text-muted);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity var(--transition), transform var(--transition);
+}
+.contact__link:hover .contact__link-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* WhatsApp CTA in right column */
+.contact__right .btn-whatsapp {
+  width: 100%;
+  justify-content: center;
+  padding: 15px 24px;
+  font-size: 15px;
+  border-radius: 10px;
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 900px) {
+  .contact__body {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .contact__map { height: 260px; }
+}
+@media (max-width: 600px) {
+  .contact__heading-wrap { margin-bottom: 36px; }
+  .contact__map { height: 220px; }
+}

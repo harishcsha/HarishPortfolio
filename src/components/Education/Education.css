@@ -1,0 +1,84 @@
+.edu-section { background: var(--bg-primary); }
+
+/* The list wrapper — no overflow:hidden, no clipping */
+.edu__list {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  /* overflow must stay visible so fade-up translateY animates without being clipped */
+  overflow: visible;
+  margin-bottom: 32px;
+  /* Fake the border-radius clipping via box-shadow outline instead */
+  box-shadow: 0 0 0 1px var(--border-color);
+  background: var(--bg-card);
+}
+
+.edu-item {
+  display: grid;
+  grid-template-columns: 130px 1fr 80px;
+  gap: 20px;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-color);
+  transition: background var(--transition);
+  /* Ensure each row has a background so the box-shadow outline shows correctly */
+  background: transparent;
+}
+.edu-item:first-child { border-radius: 12px 12px 0 0; }
+.edu-item:last-child  { border-bottom: none; border-radius: 0 0 12px 12px; }
+.edu-item:hover { background: var(--bg-card-hover); }
+
+.edu-item__year {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--purple-glow);
+  font-weight: 500;
+}
+.edu-item__inst {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 3px;
+}
+.edu-item__degree { font-size: 13px; color: var(--text-body); }
+.edu-item__grade {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--purple-accent);
+  font-weight: 600;
+  text-align: right;
+}
+
+/* Awards */
+.awards {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 26px;
+}
+.awards__title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+.awards__list { display: flex; flex-direction: column; gap: 12px; }
+.award-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.6;
+}
+.award-item__icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+@media (max-width: 600px) {
+  .edu-item {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .edu-item__grade { text-align: left; }
+  .edu-item:first-child { border-radius: 12px 12px 0 0; }
+  .edu-item:last-child  { border-radius: 0 0 12px 12px; }
+}

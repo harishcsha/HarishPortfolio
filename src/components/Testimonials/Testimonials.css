@@ -1,0 +1,245 @@
+/* ── Section ─────────────────────────────────────────── */
+.t-section {
+  background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-primary));
+  overflow: hidden;       /* clips the sliding track at section edges */
+}
+.t-section__orb {
+  position: absolute;
+  top: -160px; left: 50%;
+  transform: translateX(-50%);
+  width: 800px; height: 500px;
+  background: radial-gradient(ellipse, rgba(124,58,237,0.1) 0%, transparent 68%);
+  pointer-events: none;
+}
+.t-section__sub {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-top: -36px;       /* pull up under the heading */
+  margin-bottom: 48px;
+  font-style: italic;
+}
+
+/* ── Carousel shell ──────────────────────────────────── */
+.t-carousel {
+  position: relative;
+  /* Clip track overflow, but keep nav buttons accessible */
+  overflow: hidden;
+  border-radius: 16px;
+  /* Extra horizontal padding so prev/next buttons sit outside the clip */
+  margin: 0 -8px;
+  padding: 0 8px;
+}
+
+/* ── Sliding track ───────────────────────────────────── */
+.t-track {
+  display: flex;
+  will-change: transform;
+  /* width = total slides × slide-width; computed via JS */
+}
+
+/* ── Individual slide wrapper ────────────────────────── */
+.t-slide {
+  flex-shrink: 0;
+  padding: 4px 10px 24px;  /* bottom padding keeps drop-shadow visible */
+  box-sizing: border-box;
+}
+
+/* ── Card ────────────────────────────────────────────── */
+.t-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 32px 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+  min-height: 260px;
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition);
+  /* Speech-bubble tail */
+  clip-path: none;
+}
+.t-card::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 48px;
+  width: 20px;
+  height: 10px;
+  background: var(--bg-card);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+}
+.t-card:hover,
+.t-card--active {
+  border-color: var(--purple-accent);
+  box-shadow: 0 8px 40px rgba(124,58,237,0.18);
+  transform: translateY(-4px);
+}
+
+/* ── Opening quote icon ──────────────────────────────── */
+.t-card__quote-icon {
+  width: 28px;
+  height: 22px;
+  color: var(--purple-accent);
+  opacity: 0.55;
+  flex-shrink: 0;
+}
+
+/* ── Quote text ──────────────────────────────────────── */
+.t-card__text {
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--text-body);
+  font-style: italic;
+  flex: 1;
+  /* Clamp long quotes to 5 lines with ellipsis */
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Author row ──────────────────────────────────────── */
+.t-card__author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  /* Sits below the tail — avatar needs extra top margin */
+  padding-top: 18px;
+}
+.t-card__avatar-ring {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  padding: 2px;
+  background: linear-gradient(135deg, var(--purple-bright), var(--purple-glow));
+  box-shadow: 0 0 0 2px var(--bg-card);
+}
+.t-card__avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+.t-card__author-info { flex: 1; min-width: 0; }
+.t-card__name {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.t-card__role {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.t-card__linkedin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--purple-subtle);
+  border: 1px solid var(--border-color);
+  color: var(--purple-glow);
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+}
+.t-card__linkedin:hover {
+  background: #0077b5;
+  border-color: #0077b5;
+  color: #fff;
+}
+
+/* ── Prev / Next buttons ─────────────────────────────── */
+.t-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-60%);    /* offset slightly up (above author area) */
+  z-index: 10;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  transition: background var(--transition), border-color var(--transition), transform var(--transition);
+  /* Pull outside the overflow:hidden clip zone using negative margin trick */
+  margin-top: -8px;
+}
+.t-nav--prev { left: -4px; }
+.t-nav--next { right: -4px; }
+.t-nav:hover {
+  background: var(--purple-bright);
+  border-color: var(--purple-bright);
+  color: #fff;
+  transform: translateY(-60%) scale(1.08);
+}
+
+/* ── Dot indicators ──────────────────────────────────── */
+.t-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 32px;
+}
+.t-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-color);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background var(--transition), transform var(--transition), width var(--transition);
+}
+.t-dot--active {
+  background: var(--purple-bright);
+  width: 24px;
+  border-radius: 4px;
+  transform: none;
+}
+
+/* ── Progress bar (auto-play indicator) ─────────────── */
+@keyframes tProgress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .t-card { min-height: 240px; padding: 26px 22px 22px; }
+  .t-card__text { -webkit-line-clamp: 7; }
+}
+@media (max-width: 640px) {
+  .t-slide { padding: 4px 6px 20px; }
+  .t-card { min-height: 200px; padding: 22px 18px 18px; }
+  .t-card::after { left: 36px; }
+  .t-nav--prev { left: 0; }
+  .t-nav--next { right: 0; }
+  .t-section__sub { margin-bottom: 32px; }
+}
