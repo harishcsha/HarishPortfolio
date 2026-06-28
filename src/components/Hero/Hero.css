@@ -345,10 +345,41 @@
   .hero__name { font-size: clamp(2.2rem, 14vw, 3rem); }
 }
 
-@media (max-width: 360px) {
-  .hero__content { padding-top: 200px; }
+@media (min-width: 391px) and (max-width: 412px) {
+  .hero__content {
+    padding-top: 50px;
+  }
+}
+
+@media (min-width: 413px) and (max-width: 500px) {
+  .hero__content {
+    padding-top: 50px;
+  }
+}
+
+@media (min-width: 381px) and (max-width: 390px) {
+  .hero__content {
+    padding-top: 220px;
+  }
+  .hero__eyebrow { 
+    font-size: 10px; 
+  }
+}
+
+@media (min-width: 361px) and (max-width: 380px) {
+  .hero__content {
+    padding-top: 300px;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 360px) {
+  .hero__content {
+    padding-top: 200px;
+  }
 }
 
 @media (max-width: 320px) {
-  .hero__content { padding-top: 300px; }
+  .hero__content {
+    padding-top: 300px;
+  }
 }
