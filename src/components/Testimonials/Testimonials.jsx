@@ -1,6 +1,15 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { useInView } from '../../hooks/useParallax'
 import './Testimonials.css'
+import Husain from '../../assets/images/testimonials/Husain.jpg'
+import Lekhak from '../../assets/images/testimonials/KumarLekhak.jpeg'
+import PriyaNagol from '../../assets/images/testimonials/PriyaNagol.jpeg'
+import Anup from '../../assets/images/testimonials/Anup.jpg'
+import Shivaganga from '../../assets/images/testimonials/Shivaganga.jpg'
+import ShivamMishra from '../../assets/images/testimonials/ShivamMishra.jpeg'
+import SourabhShukla from '../../assets/images/testimonials/Sourabh_Shukla.jpeg'
+import AlokRanjan from '../../assets/images/testimonials/Alok_R.jpeg'
+import NAGARAJA from '../../assets/images/testimonials/NagarajaBV.png'
 
 // ── Data ─────────────────────────────────────────────────────────────────────
 // Replace avatar URLs with real LinkedIn profile photos — use picsum seeds as placeholders
@@ -8,56 +17,74 @@ const TESTIMONIALS = [
   {
     id: 1,
     name: 'Kumar Lekhak BK',
-    role: 'Software Engineer — Angular Developer',
-    avatar: 'https://picsum.photos/seed/kumar/120/120',
-    linkedIn: 'https://linkedin.com',
-    quote:
-      'Harish C Jingade, a very tech geek and savvy kind of guy. He\'s pro at vivid web cutting-edge technologies. It was my pleasure working with him on my annual project. We had a great time sharing thoughts and tech-talks. I enjoy discussing the recent technologies and trends with him. He is my great tech-partner. He\'s kick-ass developer!',
+    role: 'Senior Executive Engineer | Angular, React, JavaScript, TypeScript | Leveling up with Scaler and Crio.Do',
+    avatar: Lekhak,
+    linkedIn: 'https://www.linkedin.com/in/kumar-lekhak/',
+    quote: 'Harish C Jingade, a very tech geek and savvy kind of guy. He\'s pro at vivid web cutting-edge technologies. It was my pleasure working with him on my annual project. We had a great time sharing thoughts and tech-talks. I enjoy discussing the recent technologies and trends with him. He is my great tech-partner. He\'s kick-ass developer!',
   },
   {
     id: 2,
     name: 'Shivaganga Shantharaj',
-    role: 'Sr. QA Analyst at Knowledge Lens',
-    avatar: 'https://picsum.photos/seed/shivaganga/120/120',
-    linkedIn: 'https://linkedin.com',
-    quote:
-      'I am glad to share that Harish is my Tech guide. He has a good knowledge in trending technologies and skilled to decode any tech related confusions.',
+    role: 'Senior Engineer at L&T Technology services | Ex Sr. QA Analyst at Knowledge lens',
+    avatar: Shivaganga,
+    linkedIn: 'https://www.linkedin.com/in/shivaganga-b-s-3a9b30115/',
+    quote: 'I am glad to share that Harish is my Tech guide. He has a good knowledge in trending technologies and skilled to decode any tech related confusions.',
   },
   {
     id: 3,
     name: 'Priya Nagol',
     role: 'Elekrbit, India',
-    avatar: 'https://picsum.photos/seed/priya/120/120',
-    linkedIn: 'https://linkedin.com',
-    quote:
-      'Harish you really have a good technical skills. Even the soft skills are well known for you. Continue with the same knowledge. All the best!',
+    avatar: PriyaNagol,
+    linkedIn: 'https://www.linkedin.com/in/priya-nagol-19990a106/',
+    quote: 'Harish you really have a good technical skills.Even the softskills are well know for you.continue with the same knowledge. All the best',
   },
   {
     id: 4,
-    name: 'Arjun Mehta',
-    role: 'Senior Frontend Engineer at Razorpay',
-    avatar: 'https://picsum.photos/seed/arjun/120/120',
-    linkedIn: 'https://linkedin.com',
-    quote:
-      'Working with Harish was an absolute pleasure. His deep understanding of micro-frontend architecture and React ecosystems helped us ship features 40% faster. He mentors with patience and leads with clarity.',
+    name: 'Husain M',
+    role: 'Senior Software Engineer | 8+ Years Experience in B2B SaaS FinTech | JavaScript, React, TypeScript | High-Performance & Scalable Systems | AI-Augmented Engineering | IIIT-B ',
+    avatar: Husain,
+    linkedIn: 'https://www.linkedin.com/in/experienced-front-end-engineer/',
+    quote: 'Harish is a honest and hardworking person who has the efficiency to being a team player in the organization. I worked with him and I really appreciated on top of his strong expertise and dedication to the job, it is his very positive attitude always. I wish him all the best..!!',
   },
   {
     id: 5,
-    name: 'Sneha Rao',
-    role: 'Product Manager at Karbon Card',
-    avatar: 'https://picsum.photos/seed/sneha/120/120',
-    linkedIn: 'https://linkedin.com',
-    quote:
-      'Harish consistently delivered pixel-perfect, accessible UIs even under tight deadlines. His proactive communication and architectural thinking set him apart from any frontend engineer I\'ve worked with.',
+    name: 'Shivam Mishra',
+    role: 'Product Manager | QA Lead @Centific | AI | Product Management | Product Quality Assurance | Automation | Ex-Directi/Zeta | Ex-Apna',
+    avatar: ShivamMishra,
+    linkedIn: 'https://www.linkedin.com/in/shivam-mishra-2a689b34/',
+    quote: 'Harish and i worked together @ Zeta. He is very enthusiastic and always eager to learn . He is very passionate about frontend development and open to feedbacks. He has a constructive attitude towards work and will complete the given work perfectly. I wish Him all the best and recommend him highly.Harish',
   },
   {
     id: 6,
-    name: 'Rahul Deshmukh',
-    role: 'Engineering Manager at NIUM',
-    avatar: 'https://picsum.photos/seed/rahul/120/120',
-    linkedIn: 'https://linkedin.com',
-    quote:
-      'Harish revamped our SPOC Dashboard from the ground up. Beyond the technical excellence, he brought energy and initiative to every sprint. He is the kind of engineer every team needs.',
+    name: 'Sourabh Shukla',
+    role: 'Products| Cross Border Payments| Product Development | FinTech Innovator | Strategic Visionary | Banking at Karbon Card',
+    avatar: SourabhShukla,
+    linkedIn: 'https://www.linkedin.com/in/sourabhshukla58032177/',
+    quote: 'I had the pleasure of working with Harish at Karbon, where he showcased exceptional front-end development and design skills. Their expertise in HTML, CSS, JavaScript, and various frameworks, combined with a keen eye for detail, consistently resulted in visually stunning and highly functional web applications. Harish is a dedicated, innovative, and collaborative team player, always bringing valuable insights and a positive attitude to our projects.',
+  },
+  {
+    id: 7,
+    name: 'Alok R',
+    role: 'Strategy | Alliances | Partnerships | Fintech | BFSI | B2B Payments | Cards | Cross Border Payments | Commercial Payments | Commercial Lending | Ex-ICICI | Ex-Axis | Ex-RBL',
+    avatar: AlokRanjan,
+    linkedIn: 'https://www.linkedin.com/in/alok-ranjan1990/',
+    quote: 'I had the pleasure of working with Harish at Karbon in 2022-23. I am thrilled to write this recommendation for Harish as his contributions were exceptional. Harish is a highly skilled front-end developer with an impressive ability to turn creative concepts into stunning, user-friendly websites and applications. He consistently delivered high-quality work, always meeting or exceeding our project expectations. During our time together, I was consistently impressed by Harish\'s technical expertise. His proficiency in HTML, CSS, JavaScript, React JS, Front-End Architect Solutions, and front-end frameworks was evident in the seamless and visually appealing web applications he produced. He has a keen eye for detail, ensuring that every element on the page not only looks great but functions flawlessly. Beyond his technical skills, Harish is a fantastic team player. He communicates effectively, collaborates with cross-functional teams, and always seeks to understand the broader project goals. He takes feedback constructively and is proactive in addressing challenges, making him a true asset to any development team. Harish consistently met project deadlines and demonstrated a strong commitment to the success of our projects. He possesses a can-do attitude and is always eager to learn and adapt to new technologies and tools, which is valuable in the ever-evolving world of web development. In summary, I wholeheartedly recommend Harish as a Front-End Engineer. His technical expertise, commitment, and ability to work effectively within a team make him an outstanding asset. I have no doubt that he will continue to excel in future endeavours, and I look forward to the opportunity to work with him again. If you\'re seeking a top-notch Front-End Engineer for your team or project, I highly recommend Harish.',
+  },
+  {
+    id: 8,
+    name: 'NAGARAJA BV',
+    role: 'Founder & CEO @ Radiant Infinity | Building Intelligent & Secure Digital Ecosystems | Software • Cloud • Cybersecurity • AI Solutions | @radianttechnos.com · @vaultq.in',
+    avatar: NAGARAJA,
+    linkedIn: 'https://www.linkedin.com/in/nagaraja-bv/',
+    quote: 'I had a great time working with Harish Jingade. His coding knowledge and approach to Software product development were really solid. He’s dedicated, reliable, and always delivered quality work. Would definitely recommend him for any tech team.',
+  },
+  {
+    id: 9,
+    name: 'Anup Tuppad',
+    role: 'Sr. Network Architect |  Data Center Expert | Azure Networking | Cisco , Aruba,Juniper | Firewall & Security Specialist | Global Enterprise Infrastructure | IET Member',
+    avatar: Anup,
+    linkedIn: 'https://www.linkedin.com/in/anup-tuppad-17426929/',
+    quote: 'Great team player with extraordinary skill set..😊',
   },
 ]
 
@@ -82,12 +109,85 @@ function LinkedInIcon() {
   )
 }
 
-// ── Single card ───────────────────────────────────────────────────────────────
-function TestimonialCard({ t, isActive }) {
+// ── Full-quote Modal ──────────────────────────────────────────────────────────
+function TestimonialModal({ t, onClose }) {
+  // Close on Escape key
+  useEffect(() => {
+    const handler = (e) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', handler)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      window.removeEventListener('keydown', handler)
+      document.body.style.overflow = ''
+    }
+  }, [onClose])
+
   return (
-    <div className={`t-card${isActive ? ' t-card--active' : ''}`} aria-label={`Testimonial from ${t.name}`}>
+    <div
+      className="t-modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`Full testimonial from ${t.name}`}
+      onClick={(e) => { if (e.target === e.currentTarget) onClose() }}
+    >
+      <div className="t-modal">
+        {/* Close button */}
+        <button className="t-modal__close" onClick={onClose} aria-label="Close">✕</button>
+
+        {/* Header: avatar + name + role + LinkedIn */}
+        <div className="t-modal__header">
+          <div className="t-modal__avatar-ring">
+            <img src={t.avatar} alt={t.name} className="t-modal__avatar" />
+          </div>
+          <div className="t-modal__meta">
+            <div className="t-modal__name">{t.name}</div>
+            <div className="t-modal__role">{t.role}</div>
+            <a
+              href={t.linkedIn}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="t-modal__linkedin-btn"
+              aria-label={`View ${t.name} on LinkedIn`}
+            >
+              <LinkedInIcon />
+              View on LinkedIn
+            </a>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="t-modal__divider" />
+
+        {/* Full quote */}
+        <div className="t-modal__body">
+          <QuoteIcon className="t-modal__quote-icon" />
+          <p className="t-modal__text">{t.quote}</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ── Single card ───────────────────────────────────────────────────────────────
+function TestimonialCard({ t, isActive, onOpen }) {
+  return (
+    <div
+      className={`t-card${isActive ? ' t-card--active' : ''}`}
+      aria-label={`Testimonial from ${t.name} — click to read full`}
+      onClick={onOpen}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onOpen() }}
+    >
       <QuoteIcon className="t-card__quote-icon" />
       <p className="t-card__text">{t.quote}</p>
+
+      {/* "Read more" hint */}
+      <div className="t-card__read-more">
+        <span>Read full</span>
+        <span className="t-card__read-more-arrow">→</span>
+      </div>
+
       <div className="t-card__author">
         <div className="t-card__avatar-ring">
           <img
@@ -101,33 +201,37 @@ function TestimonialCard({ t, isActive }) {
           <div className="t-card__name">{t.name}</div>
           <div className="t-card__role">{t.role}</div>
         </div>
-        <a
-          href={t.linkedIn}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="t-card__linkedin"
-          aria-label={`View ${t.name} on LinkedIn`}
-        >
+        <div className="t-card__linkedin-badge" aria-hidden="true">
           <LinkedInIcon />
-        </a>
+        </div>
       </div>
     </div>
   )
 }
 
-// ── Carousel ──────────────────────────────────────────────────────────────────
-const AUTO_INTERVAL = 3500   // ms between auto-advances
-const TRANSITION_MS  = 500   // must match CSS transition duration
-
 export default function Testimonials() {
-  const [headRef, headInView] = useInView()
+  const [headRef, headInView] = useInView();
 
   // Index into LOOPED array; starts at 0 (= first real card)
-  const [index, setIndex] = useState(0)
-  const [transitioning, setTransitioning] = useState(true)
-  const trackRef  = useRef(null)
-  const timerRef  = useRef(null)
-  const pausedRef = useRef(false)
+  const [index, setIndex] = useState(0);
+  const [transitioning, setTransitioning] = useState(true);
+  const trackRef  = useRef(null);
+  const timerRef  = useRef(null);
+  const pausedRef = useRef(false);
+  const AUTO_INTERVAL = 3500;
+  const TRANSITION_MS = 500;
+
+  // ── Modal state ──────────────────────────────────────
+  const [modalData, setModalData] = useState(null) // null = closed, testimonial obj = open
+
+  const openModal  = useCallback((t) => {
+    pausedRef.current = true   // pause auto-scroll while modal is open
+    setModalData(t)
+  }, [])
+  const closeModal = useCallback(() => {
+    pausedRef.current = false
+    setModalData(null)
+  }, [])
 
   // How many cards are visible at once (responsive)
   const [visible, setVisible] = useState(3)
@@ -142,9 +246,6 @@ export default function Testimonials() {
     return () => window.removeEventListener('resize', calc)
   }, [])
 
-  // Card width = track-width / visible (set via CSS var)
-  // We translate by: index * (100% / visible)
-
   const advance = useCallback(() => {
     setTransitioning(true)
     setIndex(i => i + 1)
@@ -153,7 +254,6 @@ export default function Testimonials() {
   // After reaching the duplicate set, silently jump back to real set
   useEffect(() => {
     if (index >= TESTIMONIALS.length) {
-      // Wait for the CSS transition to finish, then snap back without animation
       const t = setTimeout(() => {
         setTransitioning(false)
         setIndex(i => i - TESTIMONIALS.length)
@@ -180,7 +280,6 @@ export default function Testimonials() {
     setTransitioning(true)
     setIndex(i => {
       const next = i + dir
-      // Allow going negative — will snap to end of real set
       if (next < 0) return TESTIMONIALS.length - 1
       return next
     })
@@ -189,7 +288,7 @@ export default function Testimonials() {
 
   // Pause on hover
   const onMouseEnter = () => { pausedRef.current = true  }
-  const onMouseLeave = () => { pausedRef.current = false }
+  const onMouseLeave = () => { if (!modalData) pausedRef.current = false }
 
   // Touch swipe
   const touchX = useRef(null)
@@ -201,14 +300,11 @@ export default function Testimonials() {
     touchX.current = null
   }
 
-  // Active dot index (mapped back to 0-based real set)
   const dotIndex = index % TESTIMONIALS.length
-
   const translateX = `translateX(calc(-${index * (100 / visible)}%))`
 
   return (
     <section className="section t-section" id="testimonials">
-      {/* Decorative orb */}
       <div className="t-section__orb" />
 
       <div className="section-inner">
@@ -233,7 +329,6 @@ export default function Testimonials() {
           onTouchEnd={onTouchEnd}
           style={{ '--visible': visible }}
         >
-          {/* Track */}
           <div
             ref={trackRef}
             className="t-track"
@@ -253,22 +348,14 @@ export default function Testimonials() {
                 <TestimonialCard
                   t={t}
                   isActive={i % TESTIMONIALS.length === dotIndex}
+                  onOpen={() => openModal(t)}
                 />
               </div>
             ))}
           </div>
 
-          {/* Prev / Next */}
-          <button
-            className="t-nav t-nav--prev"
-            onClick={() => goTo(-1)}
-            aria-label="Previous testimonial"
-          >‹</button>
-          <button
-            className="t-nav t-nav--next"
-            onClick={() => goTo(1)}
-            aria-label="Next testimonial"
-          >›</button>
+          <button className="t-nav t-nav--prev" onClick={() => goTo(-1)} aria-label="Previous testimonial">‹</button>
+          <button className="t-nav t-nav--next" onClick={() => goTo(1)}  aria-label="Next testimonial">›</button>
         </div>
 
         {/* Dots */}
@@ -286,6 +373,9 @@ export default function Testimonials() {
         </div>
 
       </div>
+
+      {/* Full-quote modal — rendered outside section-inner so it overlays everything */}
+      {modalData && <TestimonialModal t={modalData} onClose={closeModal} />}
     </section>
   )
 }
