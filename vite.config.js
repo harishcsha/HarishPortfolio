@@ -7,5 +7,5 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
   },
-  base: './HarishPortfolio',
+  base: './HarishPortfolio/',
 })
