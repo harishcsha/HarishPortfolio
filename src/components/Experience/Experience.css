@@ -42,10 +42,25 @@
 .exp-card__body {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+  transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1),
+              padding 0.45s cubic-bezier(0.4,0,0.2,1);
   padding: 0 24px 0 44px;
 }
-.exp-card__body.open { max-height: 600px; padding-bottom: 20px; }
+.exp-card__body.open {
+  /* Large enough that no realistic content is cut off.
+     If a single card ever exceeds this, the internal scroll kicks in. */
+  max-height: 2000px;
+  padding-bottom: 24px;
+  /* Internal scroll safety-net — only activates if content truly overflows */
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--purple-bright) transparent;
+}
+.exp-card__body.open::-webkit-scrollbar { width: 4px; }
+.exp-card__body.open::-webkit-scrollbar-thumb {
+  background: var(--purple-bright);
+  border-radius: 2px;
+}
 .exp-card__project { margin-bottom: 16px; }
 .exp-card__project:last-child { margin-bottom: 0; }
 .exp-card__proj-name {
@@ -56,3 +71,12 @@
   font-weight: 500;
 }
 .exp-card__proj-desc { font-size: 14px; color: var(--text-body); line-height: 1.7; }
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 600px) {
+  .exp-card__header { padding: 16px; gap: 12px; }
+  .exp-card__body { padding: 0 16px 0 32px; }
+  .exp-card__body.open { padding-bottom: 18px; }
+  .exp-card__company { font-size: 16px; }
+  .exp-card__proj-desc { font-size: 13.5px; }
+}

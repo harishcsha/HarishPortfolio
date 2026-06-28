@@ -260,17 +260,32 @@
   50% { transform: translateX(-50%) translateY(9px); }
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  /* Push content down so it clears the fixed navbar (≈56px) with extra breathing room */
-  .hero__content {
-    padding-top: 80px;
-  }
-}
+
 @media (max-width: 600px) {
   .hero__content {
-    padding-top: 88px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
+
+  /* Shrink profile ring on small screens so it doesn't crowd the nav */
+  .hero__profile-ring {
+    width: 88px;
+    height: 88px;
+  }
+  .hero__profile-wrap {
+    margin-bottom: 14px;
+  }
+
+  /* Eyebrow: smaller text, tighter spacing */
+  .hero__eyebrow {
+    font-size: 16px;
+    letter-spacing: 0.14em;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
   /* Two-line name on mobile: each span stacks as a block, centered */
   .hero__name {
     display: flex;
@@ -281,12 +296,51 @@
     gap: 0;
     line-height: 1.1;
   }
+
+  /* Role text: allow wrapping naturally */
+  .hero__role {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  /* Tagline */
+  .hero__tagline {
+    font-size: 13px;
+    margin-bottom: 24px;
+  }
+
+  /* CTA buttons: vertical stack, full-width feel */
+  .hero__ctas {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+  .hero__ctas .btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+
+  /* Stats bar: 2×2 grid */
   .hero__stats { flex-wrap: wrap; }
   .hero__stat { flex: 1 1 45%; border-bottom: 1px solid var(--border-color); }
   .hero__stat:nth-child(3) { border-bottom: none; }
   .hero__stat:nth-child(4) { border-bottom: none; }
-  .hero__ctas { flex-direction: column; align-items: center; }
+
+  /* Video controls: don't overlap CTAs */
   .hero__video-controls { bottom: 70px; right: 16px; }
-  .hero__orb--1 { width: 300px; height: 300px; top: -100px; left: -100px; }
-  .hero__orb--2 { width: 250px; height: 250px; }
+
+  /* Orbs: shrink so they don't cause horizontal scroll */
+  .hero__orb--1 { width: 260px; height: 260px; top: -80px; left: -80px; }
+  .hero__orb--2 { width: 220px; height: 220px; bottom: -80px; right: -60px; }
+}
+
+@media (max-width: 380px) {
+  /* Very small phones (iPhone SE etc.) */
+  .hero__content { padding-top: 190px; }
+  .hero__profile-ring { width: 76px; height: 76px; }
+  .hero__eyebrow { font-size: 9px; }
+  .hero__name { font-size: clamp(2.2rem, 14vw, 3rem); }
 }
