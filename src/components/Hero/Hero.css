@@ -339,8 +339,16 @@
 
 @media (max-width: 380px) {
   /* Very small phones (iPhone SE etc.) */
-  .hero__content { padding-top: 190px; }
+  .hero__content { padding-top: 300px; }
   .hero__profile-ring { width: 76px; height: 76px; }
   .hero__eyebrow { font-size: 9px; }
   .hero__name { font-size: clamp(2.2rem, 14vw, 3rem); }
+}
+
+@media (max-width: 360px) {
+  .hero__content { padding-top: 200px; }
+}
+
+@media (max-width: 320px) {
+  .hero__content { padding-top: 300px; }
 }
