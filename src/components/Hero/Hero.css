@@ -116,6 +116,7 @@
   color: var(--purple-glow);
   text-transform: uppercase;
   margin-bottom: 28px;
+  padding-top: 100px;
 }
 .hero__available-dot {
   width: 8px; height: 8px;
