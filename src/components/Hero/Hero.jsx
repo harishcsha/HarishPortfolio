@@ -100,7 +100,7 @@ export default function Hero({ scrollY }) {
       >
         <div className="hero__eyebrow">
           <span className="hero__available-dot" />
-          Available for Senior / Principal Roles
+          Available for Senior / Lead / Architect Roles
         </div>
 
         <div className="hero__profile-wrap">
